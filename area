@@ -1,0 +1,31 @@
+FE
+
+  mounted: function () {
+    axios
+      .get("http://localhost:8080/kaisenkensaku/getarealist")
+      .then(
+        function (response) {
+          this.arealist = response.data;
+        }.bind(this)
+      )
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+  
+  
+  
+  ===========================================
+  BE
+  ===========================================
+  
+  	@GetMapping("/getarealist")
+	public List<String> getAreaList() {
+
+		List<String> areaList = new ArrayList<String>();
+		areaList.add("東日本");
+		areaList.add("西日本");
+		areaList.add("全国");
+
+		return areaList;
+	}
